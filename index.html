@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="style.css" rel="stylesheet">
+    <link href="form.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+        integrity="sha512-oHDEc8Xed4hiW6CxD7qjbnI+B07vDdX7hEPTvn9pSZO1bcRqHp8mj9pyr+8RVC2GmtEfI2Bi9Ke9Ass0as+zpg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="body">
+    <div>
+        <p class="wish">
+        Good luck have fun
+        </p>
+        <form class="form js-form">
+            <fieldset>
+                <legend class="form__legend">Currency converter</legend>
+                <p class="form__instruction">
+                    Please enter the <strong>correct data</strong>. Start by select a currency and enter data.
+                </p>
+                <p>
+                    <label>
+                        <span class="form__labelText ">How much ?</span>
+                    <input class="js-value1 form__input" type="number"  step="1" min="0" required>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <span class="form__labelText">Your currency: </span>
+                        <select class="form__select  js-inputCurrency">
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="USD">USD</option>
+                            <option value="PLN">PLN</option>
+                        </select>
+                    </label>
+                </p> 
+                <p>
+                    <label>
+                        <span class="form__labelText">Target currency: </span>
+                        <select class="form__select  js-outputCurrency">
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="USD">USD</option>
+                            <option value="PLN">PLN</option>
+                        </select>
+                    </label>
+                </p>
+                <button class="form__button">Calculate</button>
+            </fieldset>
+        </form>
+        <p class="result ">
+            Result: <strong class="js-result">N/A</strong>
+        </p>
+    </div>
+
+</body>
+</html>

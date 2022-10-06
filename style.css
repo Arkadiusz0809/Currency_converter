@@ -1,0 +1,26 @@
+html{
+    box-sizing: border-box;
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+.body{
+    padding: 5px 20px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px black;
+    margin: 15px auto;
+    max-width: 700px;
+}
+
+
+.wish{
+    margin: 5px auto;
+    padding: 10px;
+    background-color: teal;
+    max-width: 150px;
+    width: 100%;
+    color: white;
+    border-radius: 3px;
+}
