@@ -1,131 +1,77 @@
 {
-    
-    CalculateResult = (inputCurrency, outputCurrency, amount) => {
 
-        const pln = 1;
-        const eur = 4.86;
-        const usd = 4.95;
-        const gbp = 5.52;
+    const convertAmountInputCurrency = (inputCurrency) => {
 
         switch (inputCurrency) {
-            case "EUR":
-
-                switch (outputCurrency) {
-                    case "GBP":
-                        return (amount * eur) / gbp;
-
-
-                    case "EUR":
-                        return amount * 1;
-
-
-                    case "USD":
-                        return (amount * eur) / usd;
-
-
-                    case "PLN":
-                        return (amount * eur) / pln;
-
-                }
-
-
             case "GBP":
+                return 5.52;
 
-                switch (outputCurrency) {
-                    case "EUR":
-                        return (amount * gbp) / eur;
-
-
-                    case "GBP":
-                        return amount * 1;
-
-
-                    case "USD":
-                        return (amount * gbp) / usd;
-
-
-                    case "PLN":
-                        return (amount * gbp) / pln;
-
-                }
-
+            case "EUR":
+                return 4.86;
 
             case "USD":
-
-                switch (outputCurrency) {
-                    case "EUR":
-                        return (amount * usd) / eur;
-
-
-                    case "GBP":
-                        return (amount * usd) / gbp;
-
-
-                    case "USD":
-                        return amount * 1;
-
-
-                    case "PLN":
-                        return (amount * usd) / pln;
-
-                }
-
+                return 4.95;
 
             case "PLN":
-
-                switch (outputCurrency) {
-                    case "EUR":
-                        return (amount * pln) / eur;
-
-
-                    case "GBP":
-                        return (amount * pln) / gbp;
-
-
-                    case "USD":
-                        return (amount * pln) / usd;
-
-
-                    case "PLN":
-                        return amount * 1;
-
-                }
-
-        };
-    };
-    const updateResultText = (result, outputCurrency) => {
-        const resultElement = document.querySelector(".js-result");
-        resultElement.innerHTML = `${result.toFixed(2)} ${outputCurrency}`;
+                return 1;
+        }
     };
 
+    const convertAmountOutputCurrency = (outputCurrency) => {
+        
+        switch (outputCurrency) {
+            case "GBP":
+                return 5.52;
 
-    const onFormSubmit = (event) => {
-        event.preventDefault();
+            case "EUR":
+                return 4.86;
 
+            case "USD":
+                return 4.95;
+
+            case "PLN":
+                return 1;
+        }
+    };
+
+    const calculateResult = (inputCurrency, outputCurrency, amount) => {
+
+        return (convertAmountInputCurrency(inputCurrency) * amount) / convertAmountOutputCurrency(outputCurrency);
+
+    };
+
+    const updateResultText = (resultElement, outputCurrency, result) => {
+        resultElement.innerHTML = ` ${result.toFixed(2)} ${outputCurrency}`;
+
+    };
+
+
+    const onFormSubmit = () => {
 
         const valueElement = document.querySelector(".js-value1");
         const inputCurrencyElement = document.querySelector(".js-inputCurrency");
         const outputCurrencyElement = document.querySelector(".js-outputCurrency");
-
+        const resultElement = document.querySelector(".js-result");
 
         const inputCurrency = inputCurrencyElement.value;
         const outputCurrency = outputCurrencyElement.value;
         const amount = valueElement.value;
-        
 
-        let result = CalculateResult(amount, outputCurrency, inputCurrency);
+        const result = calculateResult(amount, outputCurrency, inputCurrency);
 
-        updateResultText(result, outputCurrency);
+        updateResultText(resultElement, outputCurrency, result);
     };
 
 
     const init = () => {
         const formElement = document.querySelector(".js-form");
-        
 
-        formElement.addEventListener("submit", onFormSubmit);
-        formElement.focus();
+        formElement.addEventListener("submit", (event) => {
+            event.preventDefault();
+            onFormSubmit();
+        });
     };
 
     init();
+
 }
