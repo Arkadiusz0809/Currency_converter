@@ -1,6 +1,7 @@
 {
 
-    const convertAmountInputCurrency = (inputCurrency) => {
+    const convertAmountInputCurrency = (inputCurrencyElement) => {
+        const inputCurrency = inputCurrencyElement.value;
 
         switch (inputCurrency) {
             case "GBP":
@@ -17,8 +18,9 @@
         }
     };
 
-    const convertAmountOutputCurrency = (outputCurrency) => {
-        
+    const convertAmountOutputCurrency = (outputCurrencyElement) => {
+        const outputCurrency = outputCurrencyElement.value;
+
         switch (outputCurrency) {
             case "GBP":
                 return 5.52;
@@ -34,32 +36,29 @@
         }
     };
 
-    const calculateResult = (inputCurrency, outputCurrency, amount) => {
+    const calculateResult = (inputCurrencyElement, outputCurrencyElement, amount) => {
 
-        return (convertAmountInputCurrency(inputCurrency) * amount) / convertAmountOutputCurrency(outputCurrency);
+        return (convertAmountInputCurrency(inputCurrencyElement) * amount) / convertAmountOutputCurrency(outputCurrencyElement);
 
     };
 
-    const updateResultText = (resultElement, outputCurrency, result) => {
-        resultElement.innerHTML = ` ${result.toFixed(2)} ${outputCurrency}`;
+    const updateResultText = (resultElement, inputCurrencyElement, outputCurrencyElement, amount, resultCurrency) => {
+        resultElement.innerText = `${calculateResult(inputCurrencyElement,outputCurrencyElement, amount).toFixed(2)} ${resultCurrency}`;
 
     };
 
 
     const onFormSubmit = () => {
 
-        const valueElement = document.querySelector(".js-value1");
+        const amountElement = document.querySelector(".js-amount");
         const inputCurrencyElement = document.querySelector(".js-inputCurrency");
         const outputCurrencyElement = document.querySelector(".js-outputCurrency");
         const resultElement = document.querySelector(".js-result");
 
-        const inputCurrency = inputCurrencyElement.value;
-        const outputCurrency = outputCurrencyElement.value;
-        const amount = valueElement.value;
+        const resultCurrency = outputCurrencyElement.value;
+        const amount = amountElement.value;
 
-        const result = calculateResult(amount, outputCurrency, inputCurrency);
-
-        updateResultText(resultElement, outputCurrency, result);
+        updateResultText(resultElement, inputCurrencyElement, outputCurrencyElement, amount, resultCurrency);
     };
 
 
@@ -73,5 +72,4 @@
     };
 
     init();
-
 }
